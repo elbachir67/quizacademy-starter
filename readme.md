@@ -46,10 +46,6 @@ chmod +x create_project.sh
 ./create_project.sh
 ```
 
-````
-
-Ce script va créer un dossier `quizacademy` contenant toute la structure du projet avec les fichiers nécessaires.
-
 ### 2. Démarrer les services backend
 
 ```bash
@@ -179,4 +175,7 @@ docker push votrenom/quizacademy-content-service:v1
 ---
 
 Bon développement !
-````
+
+```
+
+```
