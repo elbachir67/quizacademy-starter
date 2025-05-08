@@ -1,6 +1,3 @@
-Je vous fournis ci-dessous une version corrigée du README.md qui prend en compte votre commentaire concernant les accents dans le fichier .tex. Le fichier .tex ne contient en effet pas d'accents dans le texte alors qu'il peut en avoir (sauf dans les commentaires de code).
-
-````markdown
 # QuizAcademy - Projet Intégré Flutter & Microservices
 
 Ce dépôt contient les scripts de génération et la documentation pour le projet QuizAcademy, une application de partage de connaissances académiques développée avec une architecture microservices et une interface mobile Flutter.
@@ -48,6 +45,7 @@ chmod +x create_project.sh
 # Exécuter le script pour générer le projet
 ./create_project.sh
 ```
+
 ````
 
 Ce script va créer un dossier `quizacademy` contenant toute la structure du projet avec les fichiers nécessaires.
@@ -184,4 +182,4 @@ Bon développement !
 
 ```
 
-```
+````
