@@ -179,7 +179,4 @@ docker push votrenom/quizacademy-content-service:v1
 ---
 
 Bon développement !
-
-```
-
 ````
