@@ -1,3 +1,6 @@
+Je vous fournis ci-dessous une version corrigée du README.md qui prend en compte votre commentaire concernant les accents dans le fichier .tex. Le fichier .tex ne contient en effet pas d'accents dans le texte alors qu'il peut en avoir (sauf dans les commentaires de code).
+
+````markdown
 # QuizAcademy - Projet Intégré Flutter & Microservices
 
 Ce dépôt contient les scripts de génération et la documentation pour le projet QuizAcademy, une application de partage de connaissances académiques développée avec une architecture microservices et une interface mobile Flutter.
@@ -31,7 +34,12 @@ Pour réaliser ce projet, vous aurez besoin des outils suivants :
 
 ### 1. Générer le projet
 
-Le script `create_project.sh` va créer toute la structure nécessaire pour le projet :
+Le dépôt contient deux fichiers principaux :
+
+- `create_project.sh` : Script Bash pour générer la structure du projet
+- `tp2_quizacademy.tex` : Document LaTeX avec les instructions détaillées du TP
+
+Pour démarrer :
 
 ```bash
 # Rendre le script exécutable
@@ -40,6 +48,7 @@ chmod +x create_project.sh
 # Exécuter le script pour générer le projet
 ./create_project.sh
 ```
+````
 
 Ce script va créer un dossier `quizacademy` contenant toute la structure du projet avec les fichiers nécessaires.
 
@@ -172,3 +181,7 @@ docker push votrenom/quizacademy-content-service:v1
 ---
 
 Bon développement !
+
+```
+
+```
