@@ -65,8 +65,8 @@ git clone https://github.com/votre-nom/quizacademy-init.git
 cd quizacademy-init
 
 # Rendre le script exécutable et le lancer
-chmod +x start_project.sh
-./start_project.sh
+chmod +x create_project.sh
+./create_project.sh
 
 # Naviguer vers le projet créé
 cd quizacademy
