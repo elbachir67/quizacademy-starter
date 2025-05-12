@@ -9,11 +9,11 @@ set -e # Le script s'arrête en cas d'erreur
 echo "=== Création du projet QuizAcademy ==="
 echo "Ce script va configurer l'environnement de développement complet"
 
-# Création de la structure des répertoires
-mkdir -p quizacademy/backend/user-service/src/main/java/com/quizacademy/userservice/{controller,model,repository,security,service}
+# Création de la structure des répertoires de manière plus détaillée
+mkdir -p quizacademy/backend/user-service/src/main/java/com/quizacademy/userservice/{controller,model,repository,security,service,dto}
 mkdir -p quizacademy/backend/user-service/src/main/resources
 mkdir -p quizacademy/backend/content-service/src/{controllers,models,routes,services}
-mkdir -p quizacademy/mobile/lib/{models,providers,screens/auth,screens/questions,services,widgets}
+mkdir -p quizacademy/mobile/lib/{models,providers,screens/auth,screens/questions,services,widgets,config}
 mkdir -p quizacademy/mobile/assets/images
 
 # Se positionner dans le répertoire racine
@@ -24,6 +24,7 @@ echo "Création des fichiers pour le projet..."
 
 # Création des fichiers de configuration Gradle pour le service utilisateur
 echo "=== Configuration du service utilisateur (Java/Spring Boot) ==="
+
 
 # Création du fichier build.gradle
 cat > backend/user-service/build.gradle << 'EOF'
