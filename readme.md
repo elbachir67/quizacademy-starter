@@ -4,8 +4,6 @@
 
 QuizAcademy est une application mobile de type questions/réponses développée pour l'apprentissage des architectures modernes. Ce projet intègre Flutter pour le frontend mobile, Java/Spring Boot et Node.js/Express pour les services backend, le tout orchestré avec Docker.
 
-![QuizAcademy Logo](assets/images/logo.png)
-
 ## 🏗️ Architecture
 
 ### 📊 Vue d'ensemble
@@ -32,54 +30,95 @@ QuizAcademy est une application mobile de type questions/réponses développée 
 | **Mobile App**      | Flutter/Dart     | -     | Interface utilisateur mobile           |
 | **Database**        | H2 + MongoDB     | 27017 | Persistence des données                |
 
-## 🚀 Installation Rapide
+## 🚀 Installation et Configuration
 
 ### 📋 Prérequis
 
 - ✅ **Docker & Docker Compose** (v20.0+)
 - ✅ **Flutter SDK** (v3.0+)
 - ✅ **Git** pour le clonage
+- ✅ **JDK 17+** (pour développement local Java)
+- ✅ **Node.js 18+** (pour développement local Node.js)
 - ✅ **Un émulateur Android/iOS** ou appareil physique
 
 > **💡 Tip** : Vérifiez vos installations avec `docker --version`, `flutter doctor`, et `git --version`
 
-### 📥 Installation
+### 📥 Installation Complète
 
 ```bash
-# 1️⃣ Cloner le projet
+# 1️⃣ Cloner le projet starter
 git clone https://github.com/elbachir67/quizacademy-starter.git
 cd quizacademy-starter
 
-# 2️⃣ Démarrer les services backend
+# 2️⃣ Rendre le script exécutable et lancer l'installation
+chmod +x create_project.sh
+./create_project.sh
+
+# ⏳ Le script va automatiquement :
+# - Créer toute la structure du projet
+# - Configurer les services backend (Java + Node.js)
+# - Configurer l'application mobile Flutter
+# - Créer la documentation et les scripts de test
+# - Préparer l'environnement Docker
+
+# 3️⃣ Démarrer les services backend
 cd backend
 docker-compose up --build -d
 
-# 3️⃣ Vérifier que tout fonctionne
+# 4️⃣ Vérifier que tout fonctionne
 docker-compose ps
 # Tous les services doivent être "Up"
 
-# 4️⃣ Tester automatiquement les services
+# 5️⃣ Tester automatiquement les services
 cd ../scripts
 chmod +x test_services.sh
 ./test_services.sh
 
-# 5️⃣ Configurer l'app mobile
+# 6️⃣ Configurer l'app mobile
 cd ../mobile
 flutter pub get
 
-# 6️⃣ Lancer l'application
+# 7️⃣ Lancer l'application
 flutter run
 ```
 
-### ⚡ Installation Express (1 ligne)
+### ⚡ Installation Express
 
 ```bash
-git clone https://github.com/elbachir67/quizacademy-starter.git && cd quizacademy-starter/backend && docker-compose up -d
+git clone https://github.com/elbachir67/quizacademy-starter.git && cd quizacademy-starter && chmod +x create_project.sh && ./create_project.sh
+```
+
+### 📁 Structure Créée par le Script
+
+Après exécution du script `create_project.sh`, voici la structure générée :
+
+```
+quizacademy-starter/
+├── 🔧 backend/
+│   ├── 📁 user-service/          # Service Java/Spring Boot
+│   │   ├── src/main/java/        # Code source Java
+│   │   ├── Dockerfile             # Image Docker
+│   │   └── build.gradle           # Configuration Gradle
+│   ├── 📁 content-service/        # Service Node.js/Express
+│   │   ├── src/                   # Code source JavaScript
+│   │   ├── Dockerfile             # Image Docker
+│   │   └── package.json           # Dépendances npm
+│   └── docker-compose.yml         # Orchestration services
+├── 📱 mobile/                     # Application Flutter
+│   ├── lib/                       # Code source Dart
+│   ├── assets/                    # Ressources (images, etc.)
+│   └── pubspec.yaml               # Dépendances Flutter
+├── 📚 docs/                       # Documentation technique
+├── 🔧 scripts/                    # Scripts utilitaires
+├── 📄 create_project.sh          # Script d'installation
+└── 📄 README.md                   # Ce fichier
 ```
 
 ## 📱 Utilisation
 
 ### 🌐 URLs des Services
+
+Après installation et démarrage des services :
 
 | Service         | URL                              | Description      |
 | --------------- | -------------------------------- | ---------------- |
@@ -111,17 +150,19 @@ GET  /api/questions/search        # Rechercher des questions
 
 ### 📱 Application Mobile
 
-1. **Configuration** : Modifier `mobile/lib/config/api_config.dart` si nécessaire
+1. **Configuration** : Les URLs sont préconfigurées dans `mobile/lib/config/api_config.dart`
 2. **Émulateur Android** : URLs par défaut (`10.0.2.2`)
-3. **Appareil physique** : Remplacer par l'IP de votre machine
+3. **Appareil physique** : Modifier les URLs avec l'IP de votre machine
 4. **Lancement** : `flutter run` dans le dossier `mobile/`
 
 ## 🧪 Tests
 
 ### 🔍 Tests Automatiques
 
+Après installation complète du projet :
+
 ```bash
-# Test complet des services
+# Test complet des services (script généré automatiquement)
 ./scripts/test_services.sh
 
 # Résultats attendus :
@@ -196,30 +237,9 @@ Content-Type: application/json
 
 ## 🛠️ Développement
 
-### 📁 Structure du Projet
-
-```
-quizacademy-starter/
-├── 🔧 backend/
-│   ├── 📁 user-service/          # Service Java/Spring Boot
-│   │   ├── src/main/java/        # Code source Java
-│   │   ├── Dockerfile             # Image Docker
-│   │   └── build.gradle           # Configuration Gradle
-│   ├── 📁 content-service/        # Service Node.js/Express
-│   │   ├── src/                   # Code source JavaScript
-│   │   ├── Dockerfile             # Image Docker
-│   │   └── package.json           # Dépendances npm
-│   └── docker-compose.yml         # Orchestration services
-├── 📱 mobile/                     # Application Flutter
-│   ├── lib/                       # Code source Dart
-│   ├── assets/                    # Ressources (images, etc.)
-│   └── pubspec.yaml               # Dépendances Flutter
-├── 📚 docs/                       # Documentation technique
-├── 🔧 scripts/                    # Scripts utilitaires
-└── 📄 README.md                   # Ce fichier
-```
-
 ### ⚙️ Commandes de Développement
+
+Une fois le projet installé avec le script :
 
 ```bash
 # 🐳 Backend (Docker)
@@ -247,7 +267,9 @@ flutter test                      # Tests unitaires Flutter
 <details>
 <summary>🎛️ Variables d'environnement (cliquez pour développer)</summary>
 
-#### Service Utilisateurs (.env)
+Le script d'installation configure automatiquement ces variables, mais vous pouvez les modifier :
+
+#### Service Utilisateurs (backend/user-service/.env)
 
 ```bash
 JWT_SECRET=your_super_secure_jwt_secret_key_here
@@ -255,7 +277,7 @@ SPRING_PROFILES_ACTIVE=dev
 LOGGING_LEVEL_ROOT=INFO
 ```
 
-#### Service Content (.env)
+#### Service Content (backend/content-service/.env)
 
 ```bash
 NODE_ENV=development
@@ -264,7 +286,7 @@ USER_SERVICE_URL=http://user-service:8080
 JWT_SECRET=your_super_secure_jwt_secret_key_here
 ```
 
-#### Application Flutter (api_config.dart)
+#### Application Flutter (mobile/lib/config/api_config.dart)
 
 ```dart
 class ApiConfig {
@@ -406,9 +428,32 @@ docker stats
 - **Index DB** : Recherche optimisée avec MongoDB
 - **Lazy loading** : Images et contenu à la demande
 
-## 🤝 Contribution
+## ⚠️ Important
 
-### 🛠️ Pour les Développeurs
+Ce dépôt contient uniquement :
+
+- 📄 **README.md** - Ce guide d'installation et d'utilisation
+- 🔧 **create_project.sh** - Script d'installation automatique
+
+Le script `create_project.sh` va **automatiquement créer** toute la structure du projet avec :
+
+- ✅ Services backend complets (Java/Spring Boot + Node.js/Express)
+- ✅ Application mobile Flutter fonctionnelle
+- ✅ Configuration Docker avec orchestration
+- ✅ Documentation technique détaillée
+- ✅ Scripts de test et utilitaires
+- ✅ Exemples et données de démonstration
+
+**Première étape obligatoire** : Exécuter le script d'installation !
+
+```bash
+git clone https://github.com/elbachir67/quizacademy-starter.git
+cd quizacademy-starter
+chmod +x create_project.sh
+./create_project.sh
+```
+
+## 🤝 Contribution
 
 1. **Fork** le projet sur GitHub
 2. **Clone** votre fork : `git clone https://github.com/votre-username/quizacademy-starter.git`
@@ -444,6 +489,8 @@ flutter drive --target=test_driver/app.dart  # Tests E2E
 ## 📚 Documentation
 
 ### 📖 Guides Disponibles
+
+Après installation du projet :
 
 - 📄 **[Guide Technique](docs/TECHNICAL_GUIDE.md)** - Architecture détaillée
 - 🎓 **[Guide Pédagogique](projet.pdf)** - Énoncé complet du projet
